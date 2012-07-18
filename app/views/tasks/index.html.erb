@@ -1,0 +1,38 @@
+<h1>Lista zadań</h1>
+
+<table class="table table-striped table-bordered table-condensed">
+  <thead>
+  <tr>
+    <th>Wykonano?</th>
+    <th class='table-name'>Nazwa</th>
+    <th>Dni pozostało</th>
+    <th>Data</th>
+    <th></th>
+    <!-- <th colspan=3></th> -->
+<!--     <th></th>
+    <th></th> -->
+  </tr>
+</thead>
+<tbody>
+<% @tasks.each do |task| %>
+  <tr>
+    <td><button class='btn btn-info'><%= task.done ? "TAK" : "NIE" %></button></td>
+    <td><%= task.name %></td>
+    <td><%=  (task.date - Date.today).to_i %></td>
+    <td><%= task.date %></td>
+
+    <td class='btn-group  table-operations'>
+        <%= link_to "Pokaż", task, class: "btn btn-info" %>
+        <%= link_to "Edytuj", edit_task_path(task), class: "btn btn-info" %>
+        <%= link_to "Usuń", task, confirm: 'Jesteś pewien?', method: :delete,  class: "btn btn-danger" %>
+    </td>
+    
+ 
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Nowe zadanie', new_task_path %>

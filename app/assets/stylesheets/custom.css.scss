@@ -1,0 +1,24 @@
+@import "bootstrap";
+
+body {
+	margin: 20px;
+}
+
+.btn{
+	width: 50px;
+	 text-align:center;
+}
+
+table {
+	//table-layout: fixed;
+	th{
+		background-color: #6699CC ;
+	}
+}
+
+.table-operations{
+		width: 20%;
+	}
+.table-name {
+	width: 55%;
+}
