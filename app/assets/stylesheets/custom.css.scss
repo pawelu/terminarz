@@ -1,12 +1,16 @@
 @import "bootstrap";
 
 body {
-	margin: 20px;
+	margin-left: 15px;
+	margin-right: 15px;
 }
 
 .btn{
 	width: 50px;
-	 text-align:center;
+	text-align:center;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	
 }
 
 table {
@@ -14,6 +18,7 @@ table {
 	th{
 		background-color: #6699CC ;
 	}
+
 }
 
 .table-operations{
@@ -21,4 +26,48 @@ table {
 	}
 .table-name {
 	width: 55%;
+}
+
+.yes-no{
+	width: 70px;
+	text-align:center;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.label-success{
+	font-size: 25px;
+		margin-top: 5px;
+	margin-bottom: 5px;
+	//!font-color: white;
+}
+
+.label{
+	//font-size: 15px;
+}
+
+.label-warning{
+	color: black;
+}
+
+.progress-warning .bar {
+  background-color: #FAA732;
+  background-image: -moz-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: -ms-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FAA732), to(#DF9327));
+  background-image: -webkit-linear-gradient(top, #FAA732, #DF9327);
+  background-image: -o-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: linear-gradient(top, #ee5f5b, #c43c35);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEE5F5B', endColorstr='#FFC43C35', GradientType=0);
+}
+
+.current_date{
+	float: right;
+	font-size: 15px;
+}
+
+#current_date_label{
+	margin-right: 10px;
+	margin-bottom: 5px;
 }
