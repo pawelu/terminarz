@@ -7,7 +7,7 @@ module TasksHelper
 		color_class = case value
 		when 0...15
 			"progress-danger"
-		when 10...33
+		when 15...33
 			"progress-warning"
 		else
 			"progress-success"

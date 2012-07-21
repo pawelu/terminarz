@@ -1,7 +1,9 @@
 <h1>Lista zadań</h1>
 
-<span class="label label-warning current_date"><%= Date.today %></span>
+<!-- poprawić kolejność -->
+<span id="current_date" class="label label-warning"><%= Date.today %></span>
 <span id="current_date_label" class="label label-warning current_date">Aktualna data:</span>
+
 
 <table class="table table-striped table-bordered table-condensed">
   <thead>
@@ -19,7 +21,7 @@
     <td><button class='btn btn-info yes-no'><%= task.done ? "TAK" : "NIE" %></button></td>
     <td><h1><span class="label label-success"><%= task.name %></span><h1></td>
     <td>
-      <span class="label label-warning"><%= date_diff(task.date) %></span>
+      <span id="days_left" class="label"><%= date_diff(task.date) %></span>
       <div class="progress <%= progress_class(date_diff(task.date)) %>">
         <div class="bar" style="width: <%= date_diff(task.date) %>%;"></div>
       </div>

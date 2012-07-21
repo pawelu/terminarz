@@ -25,7 +25,7 @@ table {
 		width: 20%;
 	}
 .table-name {
-	width: 55%;
+	width: 50%;
 }
 
 .yes-no{
@@ -42,32 +42,40 @@ table {
 	//!font-color: white;
 }
 
-.label{
-	//font-size: 15px;
+#days_left{
+	font-size: 15px;
+	font-color: black;
 }
 
 .label-warning{
 	color: black;
+	font-size: 15px;
 }
 
 .progress-warning .bar {
   background-color: #FAA732;
-  background-image: -moz-linear-gradient(top, #ee5f5b, #c43c35);
-  background-image: -ms-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: -moz-linear-gradient(top, #FAA732, #DF9327);
+  background-image: -ms-linear-gradient(top, #FAA732, #DF9327);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FAA732), to(#DF9327));
   background-image: -webkit-linear-gradient(top, #FAA732, #DF9327);
-  background-image: -o-linear-gradient(top, #ee5f5b, #c43c35);
-  background-image: linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: -o-linear-gradient(top, #FAA732, #DF9327);
+  background-image: linear-gradient(top, #FAA732, #DF9327);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEE5F5B', endColorstr='#FFC43C35', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFAA732', endColorstr='#FFDF9327', GradientType=0);
 }
 
-.current_date{
+#current_date{
 	float: right;
 	font-size: 15px;
 }
 
 #current_date_label{
-	margin-right: 10px;
+	float: right;
+	margin-right: 5px;
 	margin-bottom: 5px;
+}
+
+.progress{
+	margin-top: 5px;
+	clear:both;
 }
