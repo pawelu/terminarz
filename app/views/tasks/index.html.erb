@@ -17,13 +17,14 @@
 </thead>
 <tbody>
 <% @tasks.each do |task| %>
+  <% diff = date_diff(task.date) %>
   <tr>
     <td><button class='btn btn-info yes-no'><%= task.done ? "TAK" : "NIE" %></button></td>
     <td><h1><span class="label label-success"><%= task.name %></span><h1></td>
     <td>
-      <span id="days_left" class="label"><%= date_diff(task.date) %></span>
-      <div class="progress <%= progress_class(date_diff(task.date)) %>">
-        <div class="bar" style="width: <%= date_diff(task.date) %>%;"></div>
+      <span id="days_left" class="label"><%= diff %></span>
+      <div class="progress <%= progress_class(diff) %>">
+        <div class="bar" style="width: <%= diff %>%;"></div>
       </div>
     </td>
     <td><span class="label label-warning"><%= task.date %></span></td>

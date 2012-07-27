@@ -1,20 +1,26 @@
+<% if notice %>
 <div class="alert alert-success"><%= notice %></div>
+<% end %>
 
 <p>
-  <b>Name:</b>
+  <b>Nazwa zadania:</b>
   <%= @task.name %>
 </p>
 
 <p>
-  <b>Done:</b>
-  <%= @task.done %>
+  <b>Czy wykonano?:</b>
+  <button class='btn btn-info yes-no'><%= @task.done ? "TAK" : "NIE" %></button>
 </p>
 
 <p>
-  <b>Date:</b>
+  <b>Data:</b>
   <%= @task.date %>
 </p>
 
+<p>
+	<b>Dni pozostało:<b/>
+	<%= date_diff(@task.date) %>
+</p>
 
 <%= link_to 'Edytuj', edit_task_path(@task) %> |
 <%= link_to 'Powrót', tasks_path %>
