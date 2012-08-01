@@ -80,4 +80,10 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def toggle
+    @task = Task.find(params[:id])
+    @task.update_attribute(:done, !@task.done)
+    render :nothing => true
+  end
 end

@@ -1,6 +1,10 @@
 Terminarz::Application.routes.draw do
   root to: 'tasks#index'
-  resources :tasks
+  resources :tasks do
+    member do
+      post 'toggle'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
