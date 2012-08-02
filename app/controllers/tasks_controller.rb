@@ -83,7 +83,7 @@ class TasksController < ApplicationController
 
   def toggle
     @task = Task.find(params[:id])
-    @task.update_column(:done, !@task.done)
+    @task.toggle!(:done)
     render :nothing => true
   end
 end
