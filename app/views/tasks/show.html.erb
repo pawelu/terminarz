@@ -2,6 +2,7 @@
 <div class="alert alert-success"><%= notice %></div>
 <% end %>
 
+<div class="well">
 <p>
   <b>Nazwa zadania:</b>
   <%= @task.name %>
@@ -21,7 +22,7 @@
 	<b>Dni pozostało:<b/>
 	<%= date_diff(@task.date) %>
 </p>
-
+</div>
 <br /><br />
 
 <%= link_to 'Edytuj', edit_task_path(@task) %> |

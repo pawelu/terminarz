@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class TasksController < ApplicationController
   
   # GET /tasks
@@ -13,11 +15,14 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    @update_button_text = "Utwórz zadanie"
   end
 
   # GET /tasks/1/edit
   def edit
     @task = Task.find(params[:id])
+    @update_button_text = "Aktualizuj zadanie"
+
   end
 
   # POST /tasks
@@ -25,7 +30,7 @@ class TasksController < ApplicationController
     @task = Task.new(params[:task])
 
     if @task.save
-      redirect_to @task, notice: 'Zadanie zostalo utworzone.'
+      redirect_to @task, notice: 'Zadanie zostało utworzone.'
     else
       render action: "new"
     end
@@ -36,7 +41,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     if @task.update_attributes(params[:task])
-      redirect_to @task, notice: 'Zadanie zostalo uaktualnone.'
+      redirect_to @task, notice: 'Zadanie zostało uaktualnone.'
 
     else
       render action: "edit"
