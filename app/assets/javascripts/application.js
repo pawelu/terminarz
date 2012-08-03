@@ -12,4 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require bootstrap_tabs
 //= require_tree .

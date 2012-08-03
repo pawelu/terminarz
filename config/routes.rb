@@ -1,4 +1,12 @@
 Terminarz::Application.routes.draw do
+  # get "static_pages/leave"
+
+  # get "static_pages/changelog"
+
+  match '/changelog', to: 'static_pages#changelog'
+  match '/leave', to: 'static_pages#leave'
+
+
   root to: 'tasks#index'
   resources :tasks do
     member do
