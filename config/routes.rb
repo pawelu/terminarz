@@ -1,9 +1,9 @@
 Terminarz::Application.routes.draw do
-  # get "static_pages/leave"
-
+  
   # get "static_pages/changelog"
-
   match '/changelog', to: 'static_pages#changelog'
+
+  # get "static_pages/leave"
   match '/leave', to: 'static_pages#leave'
 
 
