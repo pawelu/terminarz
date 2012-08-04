@@ -4,9 +4,13 @@
 <span id="current_date" class="label label-warning"><%= Date.today %></span>
 <span id="current_date_label" class="label label-warning current_date">Aktualna data:</span>
 
+<div id="tasks_not_done_table">
 <%= render partial: "task_table", locals: { :tasks => @tasks_not_done } %>
+</div>
 
+<div id="tasks_done_table">
 <%= render partial: "task_table", locals: { :tasks => @tasks_done } %>
+</div>
 
 <br />
 

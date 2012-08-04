@@ -1,0 +1,4 @@
+$(document).ready ->
+	$('#tasks_not_done_table').html("<%=j render partial: "task_table",
+		locals: { :tasks => @tasks_not_done } %>");
+	$('#tasks_done_table').html("<%=j render partial: "task_table", locals: { :tasks => @tasks_done } %>");

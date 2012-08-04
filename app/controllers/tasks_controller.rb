@@ -5,6 +5,7 @@ class TasksController < ApplicationController
   # GET /tasks
   def index
     @tasks = Task.order("date")
+
     @tasks_done = Task.where(:done => true).order("date")
     @tasks_not_done = Task.where(:done => false).order("date")
   end
@@ -60,11 +61,15 @@ class TasksController < ApplicationController
 
   # YES/NO button switcher
   def toggle
+    @task = Task.find(params[:id])
+    @task.toggle!(:done)
+
     @tasks_done = Task.where(:done => true).order("date")
     @tasks_not_done = Task.where(:done => false).order("date")
 
-    @task = Task.find(params[:id])
-    @task.toggle!(:done)
-    render :nothing => true
+    respond_to do |format|
+      format.js
+      format.html { render :nothing => true }
+    end
   end
 end
