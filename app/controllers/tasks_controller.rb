@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   
   # GET /tasks
   def index
-    @tasks = Task.order("date")
+    # @tasks = Task.order("date")
 
     @tasks_done = Task.where(:done => true).order("date")
     @tasks_not_done = Task.where(:done => false).order("date")

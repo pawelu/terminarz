@@ -14,8 +14,8 @@
   <tr>
     <td>
       <%= button_to task.done ? "TAK" : "NIE", 
-              { :remote => true },
-              { id: task.id, class: 'btn btn-info yes-no' }  %>
+              {},
+              { id: task.id, class: 'btn btn-info yes-no' , :remote => true }  %>
     </td>
     <td><h1><span class="label label-success"><%= task.name %></span><h1></td>
 
@@ -32,7 +32,7 @@
     <td class='btn-group  table-operations'>
         <%= link_to "Pokaż", task, class: "btn btn-info" %>
         <%= link_to "Edytuj", edit_task_path(task), class: "btn btn-info" %>
-        <%= link_to "Usuń", task, confirm: 'Jesteś pewien?', method: :delete,  class: "btn btn-danger" %>
+        <%= link_to "Usuń", task, :data => { confirm: 'Jesteś pewien?' }, method: :delete,  class: "btn btn-danger" %>
     </td>
   </tr>
 <% end %>
