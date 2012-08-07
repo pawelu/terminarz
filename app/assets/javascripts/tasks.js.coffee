@@ -4,11 +4,10 @@
 
 $ -> 
   $('.btn-info').on "click", ->
+    console.log(event.type)
     if $(this).text() == "TAK" 
       $(this).text("NIE")
     else if $(this).text() == "NIE"
       $(this).text("TAK")
     id = $(this).attr('id')
     $.post('/tasks/' + id + '/toggle')
-
-  
