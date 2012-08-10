@@ -1,6 +1,9 @@
 $('#tasks_not_done_table').html("<%=j render partial: "task_table",	locals: { :tasks => @tasks_not_done } %>");
 $('#tasks_done_table').html("<%=j render partial: "task_table", locals: { :tasks => @tasks_done } %>");
 
+tasks_not_done_count = $('#tasks_done_table table tbody').children().length;
+
+$('#button-done').html("Pokaż/Ukryj zadania wykonane (" + tasks_not_done_count + ")" );
 
 // get <td> of recently clicked item, after re-rendering
 td = $('#<%= @task.id %>').parent().parent().parent();

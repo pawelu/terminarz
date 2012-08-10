@@ -13,6 +13,8 @@
 <%= render partial: "task_table", locals: { :tasks => @tasks_not_done } %>
 </div>
 
+<button id="button-done" class="btn btn-info">Pokaż/Ukryj zadania wykonane</button>
+
 <div id="tasks_done_table">
 <%= render partial: "task_table", locals: { :tasks => @tasks_done } %>
 </div>
