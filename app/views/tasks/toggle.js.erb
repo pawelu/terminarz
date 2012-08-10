@@ -1,2 +1,13 @@
 $('#tasks_not_done_table').html("<%=j render partial: "task_table",	locals: { :tasks => @tasks_not_done } %>");
 $('#tasks_done_table').html("<%=j render partial: "task_table", locals: { :tasks => @tasks_done } %>");
+
+
+// get <td> of recently clicked item, after re-rendering
+td = $('#<%= @task.id %>').parent().parent().parent();
+
+// get css <td> background-color of recently clicked item
+color = td.css('background-color');
+
+// animate bg color from green to proper table row color in 5s
+td.parent().children().css({'background-color':'#114411'}).
+	animate({'background-color':color}, 5000);
