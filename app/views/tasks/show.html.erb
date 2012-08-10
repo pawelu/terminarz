@@ -10,7 +10,7 @@
 
 <p>
   <b>Czy wykonano?:</b>
-  <button class='btn btn-info yes-no'><%= @task.done ? "TAK" : "NIE" %></button>
+  <%= @task.done ? "TAK" : "NIE" %>
 </p>
 
 <p>
@@ -19,7 +19,7 @@
 </p>
 
 <p>
-	<b>Dni pozostało:<b/>
+	<b>Dni pozostało:</b>
 	<%= date_diff(@task.date) %>
 </p>
 </div>
