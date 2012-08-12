@@ -1,5 +1,7 @@
 Terminarz::Application.routes.draw do
   
+  devise_for :users
+
   # get "static_pages/changelog"
   match '/changelog', to: 'static_pages#changelog'
 
