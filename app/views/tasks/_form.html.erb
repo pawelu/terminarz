@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name, "Nazwa zadania" %><br />
+    <%= f.label :name, "Nazwa zadania:" %>
     <%= f.text_field :name, class: "span4" %>
   </div>
   <div class="field">
-    <%= f.label :date, "Data" %><br />
+    <%= f.label :date, "Data:" %>
     <%= f.date_select :date, {}, { class: "span2" } %>
   </div>
   <div class="actions">
-    <%= f.submit @update_button_text%>
+    <%= f.submit @update_button_text, class: "btn btn-info" %>
   </div>
 <% end %>
