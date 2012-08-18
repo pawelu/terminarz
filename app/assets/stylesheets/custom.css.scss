@@ -120,7 +120,7 @@ table {
 }
 
 #leave_right_up, #leave_right_down{
-	:hover{
+	&:hover{
 		background-color: gray;
 		cursor: pointer;
 	}

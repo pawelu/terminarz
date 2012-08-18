@@ -1,0 +1,4 @@
+pl:
+  activerecord:
+    models:
+      user: 'Użytkownik'
