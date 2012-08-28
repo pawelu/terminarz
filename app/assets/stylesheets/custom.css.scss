@@ -1,66 +1,66 @@
 @import "bootstrap";
 
 body {
-	margin-left: 15px;
-	margin-right: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .btn{
-	width: 50px;
-	text-align:center;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	
+  width: 50px;
+  text-align:center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  
 }
 
 // show/hide done tasks button 
 
 #button-done{
-	width: 230px;
-	color: black;
+  width: 230px;
+  color: black;
 }
 
 
 
 table {
-	//table-layout: fixed;
-	th{
-		background-color: #6699CC ;
-	}
+  //table-layout: fixed;
+  th{
+    background-color: #6699CC ;
+  }
 
 }
 
 .table-operations{
-		width: 20%;
-	}
+    width: 20%;
+  }
 .table-name {
-	width: 50%;
+  width: 50%;
 }
 
 .yes-no{
-	width: 70px;
-	text-align:center;
-	margin-left: 10px;
-	margin-right: 10px;
+  width: 70px;
+  text-align:center;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .label-success{
-	font-size: 25px;
-		margin-top: 5px;
-	margin-bottom: 5px;
-	//!font-color: white;
+  font-size: 25px;
+    margin-top: 5px;
+  margin-bottom: 5px;
+  //!font-color: white;
 }
 
 #days_left{
-	//float: right;
-	font-size: 15px;
-	color: black;
-	margin-bottom: 5px;
+  //float: right;
+  font-size: 15px;
+  color: black;
+  margin-bottom: 5px;
 }
 
 .label-warning{
-	color: black;
-	font-size: 15px;
+  color: black;
+  font-size: 15px;
 }
 
 .progress-warning .bar {
@@ -76,61 +76,70 @@ table {
 }
 
 #current_date{
-	float: right;
-	font-size: 15px;
+  float: right;
+  font-size: 15px;
 }
 
 #current_date_label{
-	float: right;
-	margin-right: 5px;
-	margin-bottom: 5px;
+  float: right;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
 
 .progress{
-	margin-top: 5px;
-	clear:both;
+  margin-top: 5px;
+  clear:both;
 }
 
 //nawigacja
 
 #nav_container{
-	margin-left: 0px;
+  margin-left: 0px;
 }
 
 //leave
 
-#leave_value{
-	font-size: 26px;
-	padding: 1px 3px 0px;
+#leave_all_value, #leave_used_value, #leave_left_value{
+  font-size: 26px;
+  padding: 1px 3px 0px;
 }
 
 // add
 
-#leave_left{
-	font-size: 25px;
-	font-weight: bold;
-	padding-right: 5px;
-	padding-top: 8px;
-	float: left;
-	height: 35px;
+#leave_all_left{
+  font-size: 25px;
+  font-weight: bold;
+  padding-right: 5px;
+  padding-top: 8px;
+  padding-bottom: 50px;
+  float: left;
+  height: 35px;
 }
 
-#leave_right{
-	float: left;
+#leave_all_right{
+  float: left;
 }
 
-#leave_right_up, #leave_right_down{
-	&:hover{
-		background-color: gray;
-		cursor: pointer;
-	}
+#leave_all_right_up, #leave_all_right_down{
+  &:hover{
+    background-color: gray;
+    cursor: pointer;
+  }
 }
 
 #leave_wrapper{
-	padding-bottom: 30px;	
+  padding-bottom: 30px;  
 }
 
 #leave_submit{
-	margin-left: 45px;
-	width: 110px;
+  margin-left: 45px;
+  width: 110px;
+}
+
+#leave_left, #leave_used{
+  clear:both;
+  font-size: 25px;
+  font-weight: bold;
+  padding-top: 8px;
+  height: 30px;
 }

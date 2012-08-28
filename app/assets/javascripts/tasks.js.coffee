@@ -12,10 +12,10 @@ $(document).on 'click', '.yes-no', (event)->
   $.post('/tasks/' + id + '/toggle')
 
 $(document).on 'click', '#button-done', (event)->
-	event.preventDefault()
-	$('#tasks_done_table').toggle 'slow', ->
+  event.preventDefault()
+  $('#tasks_done_table').toggle 'slow', ->
 
 $ ->
-	tasks_not_done_count = $('#tasks_done_table table tbody').children().length
-	$('#button-done').html("Pokaż/Ukryj zadania wykonane (" + tasks_not_done_count + ")" )
-	$('#tasks_done_table').hide()
+  tasks_not_done_count = $('#tasks_done_table table tbody').children().length
+  $('#button-done').html("Pokaż/Ukryj zadania wykonane (" + tasks_not_done_count + ")" )
+  $('#tasks_done_table').hide()
