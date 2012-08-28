@@ -2,10 +2,12 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+# bootstrap's tabs
 $('#myTab a').click (e) ->
   e.preventDefault()
   $(this).tab('show')
 
+# leave days count setter 
 $ ->
   $('i').click ->
     leaveValue = parseInt $('#leave_all_value').html() 
@@ -14,10 +16,12 @@ $ ->
     else if $(this).hasClass("icon-chevron-down") && leaveValue > 0
       $('#leave_all_value').html(leaveValue - 1)
 
+# global variables
 root = exports ? this
 $ ->
   root.bar = $("#calendar").data('days').split(',')
   root.seed = $("#calendar").data('days').split(',')
+  root.all = parseInt $('#leave_all_value').html() 
 
 $ ->
   $('#calendar').DatePicker
@@ -29,10 +33,10 @@ $ ->
 
     onRenderCell: (elem = "#calendar",date) ->
       console.log "render"
-      # bar.push date.toString()
-      if $('#leave_left_value').html() < 1
-        if $.inArray(date.toString(),bar) > -1
-          # console.log date.toString()
+      console.log root.bar
+
+      if root.bar.length >= root.all
+        if $.inArray(date.toString(),bar) > -1 || $.inArray(date.getTime(),bar) > -1
           disabled: false
         else
           disabled: true
@@ -40,15 +44,24 @@ $ ->
         disabled: false
 
     onChange: ->
-      console.log root.bar
+      console.log "change"
       selected_dates = $('#calendar').DatePickerGetDate()
       selected_dates = selected_dates.toString().split(',')
       selected_dates = selected_dates.slice(0,selected_dates.length-1)
 
       root.bar.length = 0
       root.bar = bar.concat selected_dates
-      # console.log selected_dates
 
+      if selected_dates.length > parseInt $('#leave_all_value').html()
+        # console.log 'T'
+        # console.log bar
+        root.bar = root.bar.slice(0,-1)
+
+        $('.datepickerDisabled').each ->
+          if $(this).hasClass("datepickerSelected")
+            $(this).removeClass("datepickerSelected")
+      $('#calendar').DatePickerSetDate(root.bar)
+      console.log $('#calendar').DatePickerGetDate()
 
       days_used = selected_dates.length
 
