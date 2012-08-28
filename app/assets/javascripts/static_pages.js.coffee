@@ -11,6 +11,7 @@ $('#myTab a').click (e) ->
 $ ->
   $('i').click ->
     leaveValue = parseInt $('#leave_all_value').html() 
+    root.all = parseInt $('#leave_all_value').html()
     if $(this).hasClass("icon-chevron-up") 
       $('#leave_all_value').html(leaveValue + 1)
     else if $(this).hasClass("icon-chevron-down") && leaveValue > 0
@@ -33,7 +34,6 @@ $ ->
 
     onRenderCell: (elem = "#calendar",date) ->
       console.log "render"
-      console.log root.bar
 
       if root.bar.length >= root.all
         if $.inArray(date.toString(),bar) > -1 || $.inArray(date.getTime(),bar) > -1
@@ -51,17 +51,21 @@ $ ->
 
       root.bar.length = 0
       root.bar = bar.concat selected_dates
+      
+      # no date selected caused placing 'Invalid Date'
+      # as first element of array
+      if isNaN Date.parse(root.bar[0])
+        root.bar.length = 0
 
-      if selected_dates.length > parseInt $('#leave_all_value').html()
-        # console.log 'T'
-        # console.log bar
+      # probably redundant
+      if selected_dates.length > root.all
         root.bar = root.bar.slice(0,-1)
 
         $('.datepickerDisabled').each ->
           if $(this).hasClass("datepickerSelected")
             $(this).removeClass("datepickerSelected")
       $('#calendar').DatePickerSetDate(root.bar)
-      console.log $('#calendar').DatePickerGetDate()
+      console.log bar
 
       days_used = selected_dates.length
 
