@@ -7,6 +7,7 @@ $('#myTab a').click (e) ->
   e.preventDefault()
   $(this).tab('show')
 
+
 # leave days count setter 
 $ ->
   $('i').click ->
@@ -19,17 +20,16 @@ $ ->
 
     root.all = parseInt $('#leave_all_value').html()
 
+
 # global variables
 root = exports ? this
 $ ->
-  # in ms Date form it must be as int
-  root.bar = $("#calendar").data('days').split(',')
-  root.bar = root.bar.map (i) -> parseInt i 
+  # in ms Date form array must contain ints, not strings
   root.seed = $("#calendar").data('days').split(',')
   root.seed = root.seed.map (i) -> parseInt i
 
+  # hold leave all days count
   root.all = parseInt $('#leave_all_value').html()
-
 
 
 # call order:
@@ -42,7 +42,6 @@ $ ->
 
 $ ->
   $('#calendar').DatePicker
-    # multiple date choose
     mode: 'multiple'
     inline: true
     calendars: 3
@@ -52,50 +51,52 @@ $ ->
     date: root.seed
 
     onRenderCell: (elem = "#calendar",date) ->
-      console.log "render"
-
-      if root.bar.length >= root.all
-        if $.inArray(date.toString(),bar) > -1 || $.inArray(date.getTime(),bar) > -1
+      # if user selects all avalible days
+      if root.seed.length >= root.all
+        # disable non-selected dates
+        if $.inArray(date.getTime(),seed) > -1
           disabled: false
         else
           disabled: true
+      # explicit hash at every execution path is required
       else
         disabled: false
 
     onChange: ->
+      # get current selected dates ("Fri Jul 13 2012"... format)
+      # into temporary array "selectedDates"
+      selectedDates = $('#calendar').DatePickerGetDate()
+      selectedDates = selectedDates.toString().split(',')
+      # remove last element
+      selectedDates = selectedDates.slice(0,selectedDates.length-1)
 
-      selected_dates = $('#calendar').DatePickerGetDate()
-      selected_dates = selected_dates.toString().split(',')
-      selected_dates = selected_dates.slice(0,selected_dates.length-1)
+      # empty seed array and copy selectedDates content
+      # with typecasting to int, so seed has "1342130400000" format
+      root.seed.length = 0
+      root.seed = seed.concat selectedDates
 
-      root.bar.length = 0
-      root.bar = bar.concat selected_dates
-      
       # no date selected caused placing 'Invalid Date'
       # as first element of array
-      if isNaN Date.parse(root.bar[0])
-        root.bar.length = 0
+      if isNaN Date.parse(root.seed[0])
+        root.seed.length = 0
 
-      # probably redundant
-      if selected_dates.length > root.all
-        alert 'p'
-        root.bar = root.bar.slice(0,-1)
-
-        $('.datepickerDisabled').each ->
-          if $(this).hasClass("datepickerSelected")
-            $(this).removeClass("datepickerSelected")
+      # info when user decrease leave day count
+      # to be less than days selected count
+      if root.seed.length > root.all
+        alert 'Zaznaczono więcej dat niż można!\n\nProszę odznaczyć którąś datę.'
 
       # set internal calendar dates as selected by user
-      $('#calendar').DatePickerSetDate(root.bar)
+      $('#calendar').DatePickerSetDate(root.seed)
 
-      days_used = root.bar.length
+      # prepare variables to AJAX send
+      daysSelected = root.seed.toString()
+      daysSelectedCount = root.seed.length
 
-      days_selected = root.bar.toString()
-      $('#result').html(root.bar.toString())
+      # send to controller
       $.ajax
         type: "POST"
         data:
-          days_selected: days_selected
-          days_used : days_used
+          daysSelected: daysSelected
+          daysSelectedCount : daysSelectedCount
 
 
