@@ -12,9 +12,6 @@
   <div id="leave_used">Dni wykorzystanych: <span class="label label-info" id="leave_used_value">7</span></div>
 </div>
 
-<!-- <div id="calendar"></div> -->
 
 <%# rails' tag creates xml-like <div /> messing divs order %>
 <%= content_tag :div, nil, :id => "calendar", :data => { :days => @leave_days } %>
-
-<div id='result'>a</div>

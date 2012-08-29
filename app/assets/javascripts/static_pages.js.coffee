@@ -2,11 +2,18 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-# bootstrap's tabs
+###
+  bootstrap's tabs
+###
 $('#myTab a').click (e) ->
   e.preventDefault()
   $(this).tab('show')
 
+
+
+###
+  leave page
+###
 
 # leave days count setter 
 $ ->
@@ -18,6 +25,7 @@ $ ->
     else if $(this).hasClass("icon-chevron-down") && leaveValue > 0
       $('#leave_all_value').html(leaveValue - 1)
 
+    # update all global variable
     root.all = parseInt $('#leave_all_value').html()
 
 
@@ -67,7 +75,7 @@ $ ->
       # into temporary array "selectedDates"
       selectedDates = $('#calendar').DatePickerGetDate()
       selectedDates = selectedDates.toString().split(',')
-      # remove last element
+      # remove last element, [object HTMLDivElement]
       selectedDates = selectedDates.slice(0,selectedDates.length-1)
 
       # empty seed array and copy selectedDates content
@@ -86,6 +94,7 @@ $ ->
         alert 'Zaznaczono więcej dat niż można!\n\nProszę odznaczyć którąś datę.'
 
       # set internal calendar dates as selected by user
+      # (essential due to render/change order)
       $('#calendar').DatePickerSetDate(root.seed)
 
       # prepare variables to AJAX send
