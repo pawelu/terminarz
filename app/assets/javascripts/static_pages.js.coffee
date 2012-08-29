@@ -11,26 +11,45 @@ $('#myTab a').click (e) ->
 $ ->
   $('i').click ->
     leaveValue = parseInt $('#leave_all_value').html() 
-    root.all = parseInt $('#leave_all_value').html()
+    
     if $(this).hasClass("icon-chevron-up") 
       $('#leave_all_value').html(leaveValue + 1)
     else if $(this).hasClass("icon-chevron-down") && leaveValue > 0
       $('#leave_all_value').html(leaveValue - 1)
 
+    root.all = parseInt $('#leave_all_value').html()
+
 # global variables
 root = exports ? this
 $ ->
+  # in ms Date form it must be as int
   root.bar = $("#calendar").data('days').split(',')
+  root.bar = root.bar.map (i) -> parseInt i 
   root.seed = $("#calendar").data('days').split(',')
-  root.all = parseInt $('#leave_all_value').html() 
+  root.seed = root.seed.map (i) -> parseInt i
+
+  root.all = parseInt $('#leave_all_value').html()
+
+
+
+# call order:
+# 
+# -> render
+# 
+# (date select/unselect)
+# -> render
+# -> change
 
 $ ->
   $('#calendar').DatePicker
+    # multiple date choose
     mode: 'multiple'
     inline: true
     calendars: 3
-    starts: 1 
-    date: seed
+    # first day = Monday
+    starts: 1
+    # preselect dates from HTML5 data attribute 
+    date: root.seed
 
     onRenderCell: (elem = "#calendar",date) ->
       console.log "render"
@@ -44,7 +63,7 @@ $ ->
         disabled: false
 
     onChange: ->
-      console.log "change"
+
       selected_dates = $('#calendar').DatePickerGetDate()
       selected_dates = selected_dates.toString().split(',')
       selected_dates = selected_dates.slice(0,selected_dates.length-1)
@@ -59,22 +78,24 @@ $ ->
 
       # probably redundant
       if selected_dates.length > root.all
+        alert 'p'
         root.bar = root.bar.slice(0,-1)
 
         $('.datepickerDisabled').each ->
           if $(this).hasClass("datepickerSelected")
             $(this).removeClass("datepickerSelected")
+
+      # set internal calendar dates as selected by user
       $('#calendar').DatePickerSetDate(root.bar)
-      console.log bar
 
-      days_used = selected_dates.length
+      days_used = root.bar.length
 
-      selected_dates = selected_dates.toString()
-      $('#result').html(selected_dates.toString())
+      days_selected = root.bar.toString()
+      $('#result').html(root.bar.toString())
       $.ajax
         type: "POST"
         data:
-          days_selected: selected_dates
+          days_selected: days_selected
           days_used : days_used
 
 
