@@ -5,9 +5,9 @@ body {
   margin-right: 15px;
 }
 
-.btn{
+.btn {
   width: 50px;
-  text-align:center;
+  text-align: center;
   margin-top: 5px;
   margin-bottom: 5px;
   
@@ -15,50 +15,44 @@ body {
 
 // show/hide done tasks button 
 
-#button-done{
+#button-done {
   width: 230px;
   color: black;
 }
 
 
 
-table {
-  //table-layout: fixed;
-  th{
-    background-color: #6699CC ;
-  }
-
+table th {
+    background-color: #6699CC;
 }
 
-.table-operations{
+.table-operations {
     width: 20%;
   }
 .table-name {
   width: 50%;
 }
 
-.yes-no{
+.yes-no {
   width: 70px;
-  text-align:center;
+  text-align: center;
   margin-left: 10px;
   margin-right: 10px;
 }
 
-.label-success{
+.label-success {
   font-size: 25px;
-    margin-top: 5px;
+  margin-top: 5px;
   margin-bottom: 5px;
-  //!font-color: white;
 }
 
-#days_left{
-  //float: right;
+#days_left {
   font-size: 15px;
   color: black;
   margin-bottom: 5px;
 }
 
-.label-warning{
+.label-warning {
   color: black;
   font-size: 15px;
 }
@@ -75,38 +69,38 @@ table {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFAA732', endColorstr='#FFDF9327', GradientType=0);
 }
 
-#current_date{
+#current_date {
   float: right;
   font-size: 15px;
 }
 
-#current_date_label{
+#current_date_label {
   float: right;
   margin-right: 5px;
   margin-bottom: 5px;
 }
 
-.progress{
+.progress {
   margin-top: 5px;
-  clear:both;
+  clear: both;
 }
 
-//nawigacja
+//navigation
 
-#nav_container{
+#nav_container {
   margin-left: 0px;
 }
 
 //leave
 
-#leave_all_value, #leave_used_value, #leave_left_value{
+#leave_all_value, #leave_used_value, #leave_left_value {
   font-size: 26px;
   padding: 1px 3px 0px;
 }
 
 // add
 
-#leave_all_left{
+#leave_all_left {
   font-size: 25px;
   font-weight: bold;
   padding-right: 5px;
@@ -116,28 +110,28 @@ table {
   height: 35px;
 }
 
-#leave_all_right{
+#leave_all_right {
   float: left;
 }
 
-#leave_all_right_up, #leave_all_right_down{
-  &:hover{
+#leave_all_right_up, #leave_all_right_down {
+  &:hover {
     background-color: gray;
     cursor: pointer;
   }
 }
 
-#leave_wrapper{
+#leave_wrapper {
   padding-bottom: 30px;  
 }
 
-#leave_submit{
+#leave_submit {
   margin-left: 45px;
   width: 110px;
 }
 
-#leave_left, #leave_used{
-  clear:both;
+#leave_left, #leave_used {
+  clear: both;
   font-size: 25px;
   font-weight: bold;
   padding-top: 8px;

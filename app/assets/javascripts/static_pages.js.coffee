@@ -25,7 +25,7 @@ $ ->
     else if $(this).hasClass("icon-chevron-down") && leaveValue > 0
       $('#leave_all_value').html(leaveValue - 1)
 
-    # update all global variable
+    # update "leave all days" global variable
     root.all = parseInt $('#leave_all_value').html()
 
 
@@ -38,7 +38,7 @@ $ ->
     root.seed = $("#calendar").data('days').split(',')
     root.seed = root.seed.map (i) -> parseInt i
 
-    # hold leave all days count
+    # hold "leave all days" count
     root.all = parseInt $('#leave_all_value').html()
 
 
@@ -73,7 +73,7 @@ $ ->
         disabled: false
 
     onChange: ->
-      # get current selected dates ("Fri Jul 13 2012"... format)
+      # get current selected dates ("Fri Jul 13 2012 ..." format)
       # into temporary array "selectedDates"
       selectedDates = $('#calendar').DatePickerGetDate()
       selectedDates = selectedDates.toString().split(',')
