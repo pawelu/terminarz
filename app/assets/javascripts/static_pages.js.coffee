@@ -5,10 +5,10 @@
 ###
   bootstrap's tabs
 ###
+
 $('#myTab a').click (e) ->
   e.preventDefault()
   $(this).tab('show')
-
 
 
 ###
@@ -32,12 +32,14 @@ $ ->
 # global variables
 root = exports ? this
 $ ->
-  # in ms Date form array must contain ints, not strings
-  root.seed = $("#calendar").data('days').split(',')
-  root.seed = root.seed.map (i) -> parseInt i
+  # if we are on "leave" page
+  if document.URL.indexOf("/leave") > -1
+    # in ms Date form array must contain ints, not strings
+    root.seed = $("#calendar").data('days').split(',')
+    root.seed = root.seed.map (i) -> parseInt i
 
-  # hold leave all days count
-  root.all = parseInt $('#leave_all_value').html()
+    # hold leave all days count
+    root.all = parseInt $('#leave_all_value').html()
 
 
 # call order:
