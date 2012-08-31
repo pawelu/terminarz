@@ -8,31 +8,31 @@ class TasksController < ApplicationController
   def index
     # @tasks = Task.order("date")
 
-    @tasks_done = Task.where(:done => true).order("date")
-    @tasks_not_done = Task.where(:done => false).order("date")
+    @tasks_done = current_user.tasks.where(:done => true).order("date")
+    @tasks_not_done = current_user.tasks.where(:done => false).order("date")
   end
 
   # GET /tasks/1
   def show
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
   end
 
   # GET /tasks/new
   def new
-    @task = Task.new
+    @task = current_user.tasks.new
     @update_button_text = "Utwórz zadanie"
   end
 
   # GET /tasks/1/edit
   def edit
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
     @update_button_text = "Aktualizuj zadanie"
 
   end
 
   # POST /tasks
   def create
-    @task = Task.new(params[:task])
+    @task = current_user.tasks.new(params[:task])
 
     if @task.save
       redirect_to @task, notice: 'Zadanie zostało utworzone.'
@@ -43,7 +43,7 @@ class TasksController < ApplicationController
 
   # PUT /tasks/1
   def update
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
 
     if @task.update_attributes(params[:task])
       redirect_to @task, notice: 'Zadanie zostało uaktualnone.'
@@ -55,7 +55,7 @@ class TasksController < ApplicationController
 
   # DELETE /tasks/1
   def destroy
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
     @task.destroy
 
     redirect_to tasks_url
@@ -63,11 +63,11 @@ class TasksController < ApplicationController
 
   # YES/NO button switcher
   def toggle
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
     @task.toggle!(:done)
 
-    @tasks_done = Task.where(:done => true).order("date")
-    @tasks_not_done = Task.where(:done => false).order("date")
+    @tasks_done = current_user.tasks.where(:done => true).order("date")
+    @tasks_not_done = current_user.tasks.where(:done => false).order("date")
 
     respond_to do |format|
       format.js

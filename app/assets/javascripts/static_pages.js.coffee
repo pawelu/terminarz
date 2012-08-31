@@ -28,6 +28,11 @@ $ ->
     # update "leave all days" global variable
     root.all = parseInt $('#leave_all_value').html()
 
+    $.ajax
+      type: "POST"
+      data:
+        daysAll: root.all
+
 
 # global variables
 root = exports ? this

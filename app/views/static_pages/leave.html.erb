@@ -1,15 +1,23 @@
 <h1>Urlop</h1>
 
 <div class="well" id="leave_wrapper">
-  <div id="leave_all_left">Ilość dni urlopu/rok: <span class="label label-info" id="leave_all_value">7</span></div>
+  <div id="leave_all_left">Ilość dni urlopu/rok: 
+    <span class="label label-info" id="leave_all_value"><%= current_user.leave_all %></span>
+  </div>
   <div id="leave_all_right">
     <div id="leave_all_right_up"><i class="icon-chevron-up"></i></div>
     <div id="leave_all_right_down"><i class="icon-chevron-down"></i></div>
   </div>
-      <button class="btn btn-info btn-small" id="leave_submit">Zapisz zmiany</button>
+      <%# <button class="btn btn-info btn-small" id="leave_submit">Zapisz zmiany</button> %>
 
-  <div id="leave_left">Dni pozostało: <span class="label label-info" id="leave_left_value">9</span></div>
-  <div id="leave_used">Dni wykorzystanych: <span class="label label-info" id="leave_used_value">7</span></div>
+  <div id="leave_left">Dni pozostało: 
+    <span class="label label-info" id="leave_left_value">
+      <%= Integer(current_user.leave_all) - Integer(current_user.leave_used) %>
+    </span>
+  </div>
+  <div id="leave_used">Dni wykorzystanych: 
+    <span class="label label-info" id="leave_used_value"><%= current_user.leave_used %></span>
+  </div>
 </div>
 
 
