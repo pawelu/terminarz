@@ -1,6 +1,8 @@
 # encoding: utf-8
 
 class TasksController < ApplicationController
+
+  before_filter :authenticate_user!
   
   # GET /tasks
   def index

@@ -6,7 +6,7 @@
 
   for deployment (heroku) Coffeescript is not working in view .js.coffee(.erb)
 
-  'coffeebeans' gem solves both issues
+  'coffeebeans' gem solves second issue
 ###
 
 $ ->
