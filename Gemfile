@@ -9,6 +9,7 @@ gem 'coffeebeans'
 group :development do
   gem 'sqlite3', '1.3.5'
   gem 'pry-rails'
+  gem 'awesome_print'
 end
 
 
