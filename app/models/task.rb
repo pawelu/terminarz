@@ -5,7 +5,6 @@
 #  id         :integer         not null, primary key
 #  name       :string(255)     not null
 #  done       :boolean         default(FALSE)
-#  date       :date
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #  user_id    :integer
@@ -16,5 +15,6 @@ class Task < ActiveRecord::Base
 
   validates :name, :presence => true
 
+  has_many :task_dates, :dependent => :destroy
   belongs_to :user
 end

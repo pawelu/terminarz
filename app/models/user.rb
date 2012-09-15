@@ -13,7 +13,7 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
-#  settings               :string(255)
+#  settings               :text(255)
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
 #
