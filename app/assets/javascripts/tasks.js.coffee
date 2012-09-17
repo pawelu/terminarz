@@ -22,6 +22,13 @@ $ ->
 
   # to remove date
   $("form").on 'click', '.remove_date', (event)->
-    event.preventDefault()
     $(this).prev('input[type=hidden]').val('1')
     $(this).closest('fieldset').hide()
+    event.preventDefault()
+
+  # to add date link
+  $("form").on 'click', '.add_date', (event)->
+    time = new Date().getTime()
+    regexp = new RegExp($(this).data('id'),'g')
+    $(this).before($(this).data('fields').replace(regexp,time))
+    event.preventDefault()

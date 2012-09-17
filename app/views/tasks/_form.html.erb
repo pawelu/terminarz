@@ -19,7 +19,9 @@
     <%= f.fields_for :task_dates do |date| %>
       <%= render 'form_dates', :f => date %>
     <% end %>
+    <%= link_to_add_dates 'Dodaj kolejną datę', f, :task_dates %>
   </div>
+  <br />
   <div class="actions">
     <%= f.submit @update_button_text, class: "btn btn-info" %>
   </div>
