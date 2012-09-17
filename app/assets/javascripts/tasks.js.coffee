@@ -19,3 +19,9 @@ $ ->
   tasks_not_done_count = $('#tasks_done_table table tbody').children().length
   $('#button-done').html("Pokaż/Ukryj zadania wykonane (" + tasks_not_done_count + ")" )
   $('#tasks_done_table').hide()
+
+  # to remove date
+  $("form").on 'click', '.remove_date', (event)->
+    event.preventDefault()
+    $(this).prev('input[type=hidden]').val('1')
+    $(this).closest('fieldset').hide()

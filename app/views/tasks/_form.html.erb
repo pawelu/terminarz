@@ -16,8 +16,9 @@
     <%= f.text_field :name, class: "span4" %>
   </div>
   <div class="field">
-    <%= f.label :date, "Data:" %>
-    <%= f.date_select :date, {}, { class: "span2" } %>
+    <%= f.fields_for :task_dates do |date| %>
+      <%= render 'form_dates', :f => date %>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit @update_button_text, class: "btn btn-info" %>

@@ -1,0 +1,6 @@
+<fieldset>
+  <%= f.label :date, "Data:" %>
+  <%= f.date_select :date, {}, { class: "span2" } %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "Usuń", "#", class: "remove_date" %>
+</fieldset>

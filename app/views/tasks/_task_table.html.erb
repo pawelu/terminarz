@@ -10,7 +10,7 @@
 </thead>
 <tbody>
 <% tasks.each do |task| %>
-  <% diff = date_diff(task.date) %>
+  <% diff = date_diff(task.task_dates[0].date) %>
   <tr>
     <td>
       <%= button_to task.done ? "TAK" : "NIE", 
@@ -27,7 +27,7 @@
       
 
     </td>
-    <td><span class="label label-warning"><%= task.date %></span></td>
+    <td><span class="label label-warning"><%= task.task_dates[0].date %></span></td>
 
     <td class='btn-group  table-operations'>
         <%= link_to "Pokaż", task, class: "btn btn-info" %>

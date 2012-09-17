@@ -8,8 +8,9 @@ class TasksController < ApplicationController
   def index
     # @tasks = Task.order("date")
 
-    @tasks_done = current_user.tasks.where(:done => true).order("date")
-    @tasks_not_done = current_user.tasks.where(:done => false).order("date")
+    @tasks_done = current_user.tasks.where(:done => true)
+    # add sorting date
+    @tasks_not_done = current_user.tasks.where(:done => false)
   end
 
   # GET /tasks/1
@@ -19,7 +20,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @task = current_user.tasks.new
+    @task = current_user.tasks.new(:task_dates => [TaskDate.new])
     @update_button_text = "Utwórz zadanie"
   end
 

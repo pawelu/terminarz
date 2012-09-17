@@ -10,13 +10,15 @@
 </p>
 
 <p>
-  <b>Data:</b>
-  <%= @task.date %>
+  <b>Daty:</b><br />
+  <% @task.task_dates.each do |date| %>
+    <%= date.date %><br />
+  <% end %>
 </p>
 
 <p>
   <b>Dni pozostało:</b>
-  <%= date_diff(@task.date) %>
+  <%#date_diff(@task.date) %>
 </p>
 </div>
 <br /><br />
