@@ -1,7 +1,9 @@
 <%= form_for(@task, html: { class: "well" }) do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+      <h2>Zadanie nie zostało zapisane z powodu
+        <%= @task.errors.count > 1 ? " #{@task.errors.count} błędów:" : " błędu:" %>
+      </h2>
 
       <ul>
       <% @task.errors.full_messages.each do |msg| %>
@@ -19,7 +21,7 @@
     <%= f.fields_for :task_dates do |date| %>
       <%= render 'form_dates', :f => date %>
     <% end %>
-    <%= link_to_add_dates 'Dodaj kolejną datę', f, :task_dates %>
+    <%= link_to_add_dates 'Dodaj datę', f, :task_dates %>
   </div>
   <br />
   <div class="actions">

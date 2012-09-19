@@ -7,6 +7,6 @@ module ApplicationHelper
     fields = f.fields_for(association, new_object, :child_index => id) do |builder|
       render("form_dates", :f => builder)
     end
-    link_to 'Dodaj kolejną datę', '#', :class => 'add_date', :data => { :id => id, :fields => fields.gsub("\n", "") }
+    link_to name, '#', :class => 'add_date', :data => { :id => id, :fields => fields.gsub("\n", "") }
   end
 end

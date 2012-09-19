@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 # == Schema Information
 #
 # Table name: tasks
@@ -13,10 +15,20 @@
 class Task < ActiveRecord::Base
   attr_accessible :date, :done, :name, :task_dates, :task_dates_attributes 
  
-  validates :name, :presence => true
-
   has_many :task_dates, :dependent => :destroy
   belongs_to :user
 
   accepts_nested_attributes_for :task_dates, :allow_destroy => true
+
+  validates :name,  :presence => true
+  validate :date_existence
+
+  def date_existence
+    # require minimum one date
+    undestroyed_date_count = 0
+
+    task_dates.each { |t| undestroyed_date_count += 1 unless t.marked_for_destruction? }
+
+    errors.add :base, 'Musisz podać przynajmniej 1 datę' if undestroyed_date_count < 1
+  end
 end

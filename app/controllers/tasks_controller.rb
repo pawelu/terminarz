@@ -45,7 +45,6 @@ class TasksController < ApplicationController
   # PUT /tasks/1
   def update
     @task = current_user.tasks.find(params[:id])
-
     if @task.update_attributes(params[:task])
       redirect_to @task, notice: 'Zadanie zostało uaktualnone.'
 
@@ -67,8 +66,9 @@ class TasksController < ApplicationController
     @task = current_user.tasks.find(params[:id])
     @task.toggle!(:done)
 
-    @tasks_done = current_user.tasks.where(:done => true).order("date")
-    @tasks_not_done = current_user.tasks.where(:done => false).order("date")
+    # to do order by date
+    @tasks_done = current_user.tasks.where(:done => true)
+    @tasks_not_done = current_user.tasks.where(:done => false)
 
     respond_to do |format|
       format.js

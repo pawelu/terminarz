@@ -1,4 +1,32 @@
 pl:
   activerecord:
     models:
-      user: 'Użytkownik'
+      user: 'użytkownik'
+      task: 'zadanie'
+    attributes:
+      task:
+        name: 'Nazwa zadania'
+      task_date:
+        date: 'Data'
+      user:
+        email: 'E-mail'
+        password: 'Hasło'
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: 'musi być podany'
+              taken: 'istnieje już w bazie'
+              # following line didn't work in chrome/opera, showing popup in eng
+              # in firefox it did work, showing in error div
+              # after change in devise forms from email_field to text_field
+              # it's working on all in ff way
+              invalid: 'nie jest poprawnym adresem e-mail'
+            password:
+              blank: 'musi być podane'
+              # confirmation: and within: messages are good
+        task:
+          attributes:
+            name:
+              blank: 'musi być podana'
