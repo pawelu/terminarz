@@ -23,6 +23,16 @@ class Task < ActiveRecord::Base
   validates :name,  :presence => true
   validate :date_existence
 
+  after_validation :unmark_for_destruction
+
+  # reset marked_for_destroy option of dates
+  # after failed date_existence validation
+  def unmark_for_destruction
+    if self.errors.has_key?(:base)
+      task_dates.each { |t| t.reload if t.marked_for_destruction? }
+    end
+  end
+
   def date_existence
     # require minimum one date
     undestroyed_date_count = 0
