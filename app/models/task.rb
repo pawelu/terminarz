@@ -35,10 +35,6 @@ class Task < ActiveRecord::Base
 
   def date_existence
     # require minimum one date
-    undestroyed_date_count = 0
-
-    task_dates.each { |t| undestroyed_date_count += 1 unless t.marked_for_destruction? }
-
-    errors.add :base, 'Musisz podać przynajmniej 1 datę' if undestroyed_date_count < 1
+    errors.add :base, 'Musisz podać przynajmniej 1 datę' if task_dates.all?(&:marked_for_destruction?)
   end
 end
