@@ -21,7 +21,7 @@ class Task < ActiveRecord::Base
   accepts_nested_attributes_for :task_dates, :allow_destroy => true
 
   validates :name,  :presence => true
-  validate :date_existence
+  validate :date_existence, :date_uniqueness
 
   after_validation :unmark_for_destruction
 
@@ -36,5 +36,9 @@ class Task < ActiveRecord::Base
   def date_existence
     # require minimum one date
     errors.add :base, 'Musisz podać przynajmniej 1 datę' if task_dates.all?(&:marked_for_destruction?)
+  end
+
+  def date_uniqueness
+    errors.add :base, 'Daty nie mogą być duplikatami' unless task_dates.map(&:date).uniq.size == task_dates.size
   end
 end
